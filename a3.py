@@ -6,6 +6,7 @@ import random
 NUM_CARDS_IN_HAND = 5
 NUM_CARDS_IN_DECK = 24
 
+# Changed this so that it would be easier to create a deck
 SUIT_NAMES = ["Clubs", "Spades", "Hearts", "Diamonds"]
 SUIT_COLORS = ["Black", "Black", "Red", "Red"]
 FACES = ["Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"]
@@ -24,6 +25,7 @@ NUMBERED = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
 #  Nine=9; Ten=10; Jack=11; and so on, up to Ace=14.
 
 # shuffles the deck, returns a pointer to the deck
+# added this function to help in create a deck
 def shuffle_deck(deck):
     for i in range(0, 7):
         random.shuffle(deck)
@@ -31,6 +33,7 @@ def shuffle_deck(deck):
 
 
 # determines if the specified card is in the deck, returns 0 if the card is not in the deck, 1 otherwise
+# added this to help for deck functions (we don't want to duplicate cards)
 def is_card_in_deck(deck, card):
     for i in range(0, len(deck)):
         if deck[i] == card:
@@ -101,7 +104,6 @@ def print_deck(deck):
 
 ## A Hand is a linked list, so we define Card_Nodes before
 ## defining the Hand
-
 def create_card_node(card):
     card_node = {'next': None, 'prev': None, 'payload': card}
     return card_node
@@ -150,6 +152,7 @@ def add_card_to_hand(hand, card):
 # Returns None if the specified card is not in the hand
 def remove_card_from_hand(hand, card):
     card_node = hand['first_card']
+    # loop through all cards through linked list
     while card_node is not None:
         if card_node['payload'] == card:
             hand['num_cards_in_hand'] -= 1
@@ -164,11 +167,11 @@ def remove_card_from_hand(hand, card):
     return None
 
 
+# determines if the specified card is in the hand, returns 0 if the card is not in the hand, 1 otherwise
+# added this function since it existed in tests
 def is_card_in_hand(hand, card):
-    # determines if the specified card is in the hand, returns 0 if the card is not in the hand, 1 otherwise
-    # hand is a linked list, represented by a dict of {first_card, num_cards_in_hand}
-    # card is a tuple of (name, suit, color, value)
     card_node = hand['first_card']
+    # loop through all cards through linked list
     while card_node is not None:
         if card_node['payload'] == card:
             return 1

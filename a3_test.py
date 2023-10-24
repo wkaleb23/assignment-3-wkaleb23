@@ -88,7 +88,8 @@ def remove_first_card_from_hand_test():
     print("remove_first_card_from_hand_test passed")
 
 
-def remove_last_card_from_hand_test():
+# also checking that we can remove a card from the middle or end of hand
+def remove_any_card_from_hand_test():
     ## Set up
     hand = create_hand()
     card = ("Jack", "Hearts", "Red", 11)
@@ -108,6 +109,7 @@ def remove_last_card_from_hand_test():
     print("remove_last_card_from_hand_test passed")
 
 
+# Added tests for checking that we can't go over the full hand limit
 def check_full_hand_test():
     # try to add a card to a full hand
     ## Set up
@@ -134,6 +136,7 @@ def check_full_hand_test():
     print("check_full_hand_test passed")
 
 
+# Adding tests for some of the basic deck functions
 def deck_functions_test():
     # test the functions peek_card, pop_card, is_deck_empty
     ## Set up
@@ -151,6 +154,7 @@ def deck_functions_test():
     print("deck_functions_test passed")
 
 
+# adding tests for the exceptions in the push_card_to_deck
 def push_card_to_deck_test():
     # test that you can't add a card to a full deck, or a card that is already in the deck
     ## Set up
@@ -172,6 +176,7 @@ def push_card_to_deck_test():
     print("push_card_to_deck_test passed")
 
 
+# Add to main the new tests
 def main():
     create_deck_test()
     create_card_node_test()
@@ -180,7 +185,7 @@ def main():
     add_1card_to_hand_test()
     add_2cards_to_hand_test()
     remove_first_card_from_hand_test()
-    remove_last_card_from_hand_test()
+    remove_any_card_from_hand_test()
     check_full_hand_test()
     push_card_to_deck_test()
 
